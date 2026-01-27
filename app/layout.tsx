@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Header from "./components/Header";
 
 const inter = Inter({
   subsets: ["latin", "cyrillic"],
@@ -30,8 +31,9 @@ export default function RootLayout({
     <html lang="ru">
       <body className={inter.className}>
         <div className="min-h-screen flex flex-col">
+          <Header />
           {/* Хедер */}
-          <header className="border-b bg-korzina-surface backdrop-blur">
+          {/* <header className="border-b bg-korzina-surface backdrop-blur">
             <div className="container-page flex items-center justify-between py-4">
               <div className="flex items-center gap-2">
                 <Image
@@ -58,18 +60,12 @@ export default function RootLayout({
               </nav>
 
               <div className="flex items-center gap-3">
-                {/* <button className="rounded-full border border-slate-700 px-3 py-1.5 text-xs md:text-sm text-slate-100 hover:border-slate-500 transition">
-                  Войти
-                </button> */}
-                {/* <button className="hidden sm:inline-flex rounded-full bg-korzina-primary px-3.5 py-1.5 text-xs md:text-sm font-medium text-white shadow-soft hover:bg-korzina-primaryDark transition">
-                  Скачать приложение
-                </button> */}
                 <button className="inline-flex items-center justify-center rounded-full bg-korzina-primary px-6 py-2.5 text-sm font-medium text-white shadow-soft hover:bg-korzina-primaryDark transition">
-                  Скачать для iOS / Android
+                  Получить бета-доступ
                 </button>
               </div>
             </div>
-          </header>
+          </header> */}
 
           {/* Контент страниц */}
           <main className="flex-1">{children}</main>

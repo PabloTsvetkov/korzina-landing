@@ -44,7 +44,7 @@ export default function HeroSection() {
               className="inline-flex items-center justify-center rounded-full px-6 py-2.5 text-sm font-semibold text-white shadow-soft transition hover:opacity-95 active:opacity-90"
               style={{ backgroundColor: "#FE6900" }}
             >
-              Скачать для iOS / Android
+              Получить доступ
             </button>
 
             <a

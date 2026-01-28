@@ -14,7 +14,7 @@ export default function Header() {
       { id: "saving", label: "Экономия" },
       { id: "faq", label: "FAQ" },
     ],
-    []
+    [],
   );
 
   const [scrolled, setScrolled] = useState(false);
@@ -42,16 +42,18 @@ export default function Header() {
         // Берём самый “видимый”/пересёкший порог
         const visible = entries
           .filter((e) => e.isIntersecting)
-          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+          .sort(
+            (a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0),
+          )[0];
 
         if (visible?.target?.id) setActiveId(visible.target.id);
       },
       {
         // “Лучший” баланс для лендингов
         root: null,
-        threshold: [0.25, 0.4, 0.6],
-        rootMargin: "-20% 0px -55% 0px",
-      }
+        rootMargin: "-30% 0px -40% 0px",
+        threshold: [0.1, 0.25, 0.5],
+      },
     );
 
     sections.forEach((s) => obs.observe(s));
@@ -105,7 +107,9 @@ export default function Header() {
           className={[
             "w-full max-w-6xl",
             "transition-all duration-300 ease-out",
-            scrolled ? "translate-y-0 opacity-100" : "translate-y-0 opacity-100",
+            scrolled
+              ? "translate-y-0 opacity-100"
+              : "translate-y-0 opacity-100",
           ].join(" ")}
         >
           <nav
@@ -164,7 +168,9 @@ export default function Header() {
                       className={[
                         "text-[15px] lg:text-[16px] font-semibold",
                         "transition-colors",
-                        active ? "text-slate-900" : "text-slate-700 hover:text-slate-900",
+                        active
+                          ? "text-slate-900"
+                          : "text-slate-700 hover:text-slate-900",
                         "relative",
                       ].join(" ")}
                     >
@@ -224,7 +230,11 @@ export default function Header() {
                 aria-expanded={mobileOpen}
                 aria-label="Открыть меню"
               >
-                {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+                {mobileOpen ? (
+                  <X className="h-5 w-5" />
+                ) : (
+                  <Menu className="h-5 w-5" />
+                )}
               </button>
             </div>
           </nav>
@@ -237,7 +247,9 @@ export default function Header() {
           "md:hidden",
           "fixed inset-0 z-40",
           "transition-opacity duration-200",
-          mobileOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none",
+          mobileOpen
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none",
         ].join(" ")}
         aria-hidden={!mobileOpen}
       >
@@ -298,7 +310,9 @@ export default function Header() {
                     {item.label}
                     <span
                       className="h-2 w-2 rounded-full"
-                      style={{ backgroundColor: active ? "#FE6900" : "transparent" }}
+                      style={{
+                        backgroundColor: active ? "#FE6900" : "transparent",
+                      }}
                       aria-hidden="true"
                     />
                   </span>

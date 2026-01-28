@@ -2,6 +2,7 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import FAQSection from "./components/FAQSection";
 import HeroSection from "./components/HeroSection";
+import HowItWorksSection from "./components/HowItWorksSection";
 
 export const dynamic = "force-static"; // явно говорим, что эта страница статическая
 
@@ -19,7 +20,7 @@ export default function HomePage() {
       <HeroSection />
       <HowItWorksSection />
       <SavingSection />
-      <B2BSection />
+      {/* <B2BSection /> */}
       <FAQSection />
       <CTASection />
     </>
@@ -99,104 +100,6 @@ function SavingSection() {
             </div>
           ))}
         </div>
-      </div>
-    </section>
-  );
-}
-
-/* ===== HOW IT WORKS ===== */
-
-function HowItWorksSection() {
-  const steps = [
-    {
-      title: "Собери корзину",
-      description:
-        "Пользоавтель добавляет продукты как обычно: молоко, хлеб, овощи, товары для дома.",
-      badge: "Шаг 1",
-    },
-    {
-      title: "Корзина всё считает",
-      description:
-        "Мы считаем итоговую стоимость по разным магазинам с учётом доставки, акций и времени.",
-      badge: "Шаг 2",
-    },
-    {
-      title: "Выбери лучший вариант",
-      description:
-        "Показываем 2–3 оптимальных сценария: дешевле, быстрее, удобнее по времени и адресу.",
-      badge: "Шаг 3",
-    },
-  ];
-
-  return (
-    <section id="how" className="section">
-      <div className="container-page grid gap-10 md:grid-cols-[1.1fr,1fr] items-start">
-        <div>
-          <h2 className="section-title text-korzina-primary">
-            Как работает Корзина
-          </h2>
-          <p className="section-subtitle text-korzina-textMuted">
-            Вместо того чтобы переключаться между приложениями разных сетей,
-            пользователь работает только с Корзиной. Дальше мы ведём его до
-            оформления заказа в выбранном магазине.
-            {/* какое нибудь описание можно вставить */}
-          </p>
-
-          <div className="mt-8 space-y-4">
-            {steps.map((step, index) => (
-              <div
-                key={step.title}
-                className="flex gap-4 rounded-2xl border border-korzina-primary/15 bg-korzina-surface p-4"
-                // className="flex gap-4 rounded-xl border bg-korzina-surface p-4"
-              >
-                <div className="mt-1 h-8 w-8 flex items-center justify-center rounded-full bg-korzina-primary/10 text-xs font-semibold text-korzina-primary">
-                  {index + 1}
-                </div>
-                <div className="space-y-1">
-                  <div className="text-xs uppercase tracking-wide text-korzina-primary">
-                    {step.badge}
-                  </div>
-                  <div className="font-medium text-korzina-text">
-                    {step.title}
-                  </div>
-                  <div className="text-sm text-korzina-textMuted">
-                    {step.description}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        {/* Простая “диаграмма пути клиента” */}
-        <div className="rounded-3xl border border-korzina-primary/15 bg-korzina-surface p-5 shadow-soft">
-          <div className="text-sm font-medium mb-4 text-korzina-text">
-            Путь клиента
-          </div>
-          <ol className="space-y-4 text-sm text-korzina-textMuted">
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-korzina-primary" />
-              <span>Корзина: пользователь собирает список покупок</span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-korzina-primary" />
-              <span>
-                Подбор магазинов: считаем итоговую сумму и доставку по партнёрам
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-korzina-primary" />
-              <span>
-                Выбор сценария: дешевле / быстрее / удобнее — в зависимости от
-                приоритета
-              </span>
-            </li>
-            <li className="flex items-start gap-3">
-              <span className="mt-1 h-2 w-2 rounded-full bg-korzina-primary" />
-              <span>Переход в магазин партнёра и оформление заказа</span>
-            </li>
-          </ol>
-        </div>
-        {/* сюда пока не знаю что */}
       </div>
     </section>
   );

@@ -1,27 +1,29 @@
+/* globals.css */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  color-scheme: dark;
+  color-scheme: light; /* было dark */
 }
 
-html, 
+html,
 body {
   padding: 0;
   margin: 0;
 }
 
 body {
-  @apply bg-[#f6f8f6] text-[#000000] antialiased;
+  /* базовый фон пусть будет очень светлым (fallback) */
+  @apply bg-[#fffaf6] text-[#0f172a] antialiased;
 }
 
-/* Контейнер по центру для всех секций */
+/* Контейнер */
 .container-page {
   @apply mx-auto max-w-6xl px-4;
 }
 
-/* Мелкие утилиты именно под лендинг (чтобы не плодить клёвые классы по 100 раз) */
 .section {
   @apply py-16 md:py-24;
 }
@@ -30,6 +32,41 @@ body {
   @apply text-3xl md:text-4xl font-semibold tracking-tight mb-4;
 }
 
+/* было text-slate-400 (слишком бледно для светлой темы) */
 .section-subtitle {
-  @apply text-slate-400 max-w-2xl;
+  @apply text-slate-600 max-w-2xl;
+}
+
+/* ===== GLOBAL CANVAS (Variant A) ===== */
+/* Светлый фон + оранжевые glow-пятна */
+.bg-korzina-canvas {
+  background:
+    radial-gradient(680px 420px at 18% 12%,
+      rgba(254, 105, 0, 0.18),
+      transparent 62%),
+    radial-gradient(520px 340px at 82% 18%,
+      rgba(254, 105, 0, 0.12),
+      transparent 64%),
+    radial-gradient(760px 520px at 55% 88%,
+      rgba(254, 105, 0, 0.10),
+      transparent 70%),
+    linear-gradient(to bottom,
+      #fffaf6,
+      #ffffff 42%,
+      #ffffff);
+}
+
+/* Лёгкий шум — супер “дорогой” эффект */
+.bg-korzina-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 220px 220px;
+}
+
+/* Glass surface for sections / cards */
+.korzina-glass {
+  background: rgba(255, 255, 255, 0.70);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
 }

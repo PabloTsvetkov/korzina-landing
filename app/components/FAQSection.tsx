@@ -7,7 +7,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="section bg-korzina-bg">
+    <section id="faq" className="section">
       <div className="container-page">
         <h2 className="section-title text-korzina-primary">Частые вопросы</h2>
         <p className="section-subtitle text-korzina-textMuted">

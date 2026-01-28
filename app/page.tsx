@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { Metadata } from "next";
 import FAQSection from "./components/FAQSection";
+import HeroSection from "./components/HeroSection";
 
 export const dynamic = "force-static"; // явно говорим, что эта страница статическая
 
@@ -16,124 +17,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <SavingSection />
       <HowItWorksSection />
+      <SavingSection />
       <B2BSection />
       <FAQSection />
       <CTASection />
     </>
-  );
-}
-
-/* ===== HERO ===== */
-
-function HeroSection() {
-  return (
-    <section className="section bg-korzina-bg">
-      <div className="container-page grid gap-10 md:grid-cols-[1.2fr,1fr] items-center">
-        <div className="space-y-6">
-          {/* бейджик сверху */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-korzina-primary/40 bg-korzina-primary/10 px-3 py-1 text-xs text-korzina-primary">
-            <span className="h-2 w-2 rounded-full bg-korzina-accent" />
-            Экономия до <span className="font-semibold">
-              10% на продуктах
-            </span>{" "}
-          </div>
-          <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-korzina-text">
-            Один сервис — вся{" "}
-            <span className="text-korzina-accent">корзина продуктов</span> из
-            разных магазинов.
-          </h1>
-          <p className="text-base md:text-lg text-korzina-textMuted max-w-xl">
-            Корзина сравнивает стоимость всей корзины сразу в нескольких
-            магазинах и показывает, где выгоднее заказать с доставкой. Без
-            переключения между приложениями и ручного сравнения.
-            {/* Здесь какое-нибудь описание работы сервиса */}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3">
-            <button className="inline-flex items-center justify-center rounded-full bg-korzina-primary px-6 py-2.5 text-sm font-medium text-white shadow-soft hover:bg-korzina-primaryDark transition">
-              Скачать для iOS / Android
-            </button>
-            {/* либо две кнопки на айос/андроид. либо кнопка на новую
-            страницу/раздел */}
-            {/* <button className="inline-flex items-center justify-center rounded-full border border-korzina-primary/40 px-6 py-2.5 text-sm text-korzina-primary hover:bg-korzina-surface transition">
-              Смотреть, как это работает
-            </button> */}
-          </div>
-          <div className="flex flex-wrap gap-4 text-xs text-korzina-textMuted">
-            <span>∙ Экономия на доставке</span>
-            <span>∙ Учитываем акции и промо</span>
-            <span>∙ Путь клиента от корзины до чека</span>
-            {/* <span>∙ пункт 1</span>
-            <span>∙ пункт 2</span>
-            <span>∙ пункт 3</span> */}
-          </div>
-        </div>
-
-        {/* Правая часть — макет приложения / иллюстрация */}
-        {/* <div className="relative"> */}
-        {/* <div className="absolute -inset-8 rounded-3xl bg-korzina-accent/20 blur-3xl" /> */}
-        {/* <div className="bg-white"> */}
-        <Image
-          src="/phone+app.png"
-          alt="phone with an app"
-          width={240}
-          height={350}
-          className="ml-auto mr-auto"
-        />
-
-        {/* </div> */}
-        {/* <div className="relative rounded-3xl border border-korzina-primary/20 bg-korzina-surface p-4 shadow-soft">
-            <div className="flex items-center justify-between mb-4">
-              <div className="text-xs text-korzina-textMuted">
-                Корзина · предварительный просмотр
-              </div>
-              <div className="flex gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-korzina-primary" />
-                <span className="h-1.5 w-1.5 rounded-full bg-korzina-accent" />
-                <span className="h-1.5 w-1.5 rounded-full bg-korzina-accentDark" />
-              </div>
-            </div>
-
-            <div className="grid gap-4">
-              <div className="rounded-2xl bg-korzina-bg border border-korzina-primary/15 p-3 flex justify-between items-center">
-                <div className="text-xs text-korzina-text">
-                  Магнит ·{" "}
-                  <span className="text-korzina-primary">выгоднее на 7%</span>
-                </div>
-                <div className="text-xs text-korzina-textMuted">
-                  доставка 25–40 мин
-                </div>
-              </div>
-              <div className="rounded-2xl bg-korzina-bg border border-korzina-primary/15 p-3 flex justify-between items-center">
-                <div className="text-xs text-korzina-text">
-                  ВкусВилл ·{" "}
-                  <span className="text-korzina-primary">
-                    удобнее по адресу
-                  </span>
-                </div>
-                <div className="text-xs text-korzina-textMuted">
-                  доставка 30–45 мин
-                </div>
-              </div>
-              <div className="rounded-2xl bg-korzina-bg border border-korzina-primary/15 p-3 flex justify между items-center">
-                <div className="text-xs text-korzina-text">
-                  Перекрёсток ·{" "}
-                  <span className="text-korzina-primary">лучшие акции</span>
-                </div>
-                <div className="text-xs text-korzina-textMuted">
-                  доставка 40–60 мин
-                </div>
-              </div>
-
-              <div className="rounded-2xl bg-gradient-to-r from-korzina-accent to-korzina-accentDark p-3 text-xs text-korzina-text font-medium">
-                Корзина уже посчитала, где дешевле твой завтрашний завтрак.
-              </div>
-            </div>
-          </div> */}
-        {/* </div> */}
-      </div>
-    </section>
   );
 }
 
@@ -176,7 +65,7 @@ function SavingSection() {
   ];
 
   return (
-    <section id="saving" className="section bg-korzina-surface">
+    <section id="saving" className="section">
       <div className="container-page">
         <h2 className="section-title text-korzina-primary">
           Где появляется экономия
@@ -240,7 +129,7 @@ function HowItWorksSection() {
   ];
 
   return (
-    <section id="how" className="section bg-korzina-bg">
+    <section id="how" className="section">
       <div className="container-page grid gap-10 md:grid-cols-[1.1fr,1fr] items-start">
         <div>
           <h2 className="section-title text-korzina-primary">
@@ -326,7 +215,7 @@ function B2BSection() {
   ];
 
   return (
-    <section id="b2b" className="section bg-korzina-surface">
+    <section id="b2b" className="section">
       <div className="container-page grid gap-10 md:grid-cols-2 items-start">
         <div>
           <h2 className="section-title text-korzina-primary">
@@ -390,7 +279,7 @@ function B2BSection() {
 function CTASection() {
   return (
     <section className="section bg-gradient-to-r from-korzina-accent to-korzina-accentDark">
-      {/* <section className="section bg-korzina-surface"> */}
+      {/* <section className="section"> */}
       <div className="container-page flex flex-col md:flex-row items-center justify-between gap-6 text-korzina-text">
         <div>
           <h2 className="text-2xl md:text-3xl font-semibold mb-2">

@@ -2,9 +2,9 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import FAQSection from "./components/FAQSection";
 import HeroSection from "./components/HeroSection";
-import HowItWorksSection from "./components/HowItWorksSection";
 import SavingSection from "./components/SavingSection";
 import CTASection from "./components/CTASection";
+import HowItWorksSection from "./components/HowItWorksSection";
 
 export const dynamic = "force-static"; // явно говорим, что эта страница статическая
 

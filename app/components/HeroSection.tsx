@@ -29,8 +29,8 @@ export default function HeroSection() {
 
           <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900">
             Один сервис — вся{" "}
-            <span style={{ color: "#FE6900" }}>корзина продуктов</span> из разных
-            магазинов.
+            <span style={{ color: "#FE6900" }}>корзина продуктов</span> из
+            разных магазинов.
           </h1>
 
           <p className="text-base md:text-lg text-slate-600 max-w-xl">
@@ -63,7 +63,7 @@ export default function HeroSection() {
         </div>
 
         {/* RIGHT (phone + glow card) */}
-        <div className="relative flex justify-center md:justify-end">
+        <div className="relative flex justify-center md:justify-end top-[70px]">
           {/* phone glow */}
           <div
             aria-hidden
@@ -72,16 +72,15 @@ export default function HeroSection() {
           />
 
           {/* glass frame */}
-          <div className="relative rounded-3xl shadow-soft p-4 md:p-5 ">
-            <Image
-              src="/phoneWithApp.png"
-              alt="Корзина — интерфейс приложения"
-              width={190}
-              height={250}
-              priority
-              className="h-auto w-full max-w-xs md:max-w-sm"
-            />
-          </div>
+          <Image
+            src="/phoneLeft.png"
+            alt="Корзина — интерфейс приложения"
+            width={500}
+            height={500}
+            priority
+            className="h-[700px] w-[384px] max-w-xs md:max-w-sm rounded-3xl
+             drop-shadow-[0_40px_30px_rgba(0,0,0,0.25)]"
+          />
         </div>
       </div>
     </section>

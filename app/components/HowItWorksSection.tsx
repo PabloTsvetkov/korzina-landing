@@ -1,211 +1,137 @@
+// app/components/HowItWorksSection.tsx
 "use client";
 
-import React from "react";
+import Image from "next/image";
+
+const ORANGE = "#FE6900";
 
 type Step = {
+  number: string;
   title: string;
   description: string;
-};
-
-type FeatureCard = {
-  tag: string;
-  title: string;
-  description: string;
-  stat?: string; // микро-пруф (опционально)
-  highlight?: boolean; // большая карточка
+  imageSrc: string;
+  imageAlt: string;
 };
 
 export default function HowItWorksSection() {
-  // очень компактные шаги (можно оставить даже если карточки ещё не готовы)
   const steps: Step[] = [
     {
+      number: "01",
+      title: "Выбери магазин",
+      description:
+        "Укажи предпочтения — адрес и время. Мы покажем подходящие варианты.",
+      imageSrc: "/phoneShopsPortrait.png",
+      imageAlt: "Экран выбора магазина",
+    },
+    {
+      number: "02",
       title: "Собери корзину",
-      description: "Добавь продукты как обычно — без ручного сравнения.",
-    },
-    {
-      title: "Корзина посчитает варианты",
-      description: "С учётом цен, доставки, акций и времени.",
-    },
-    {
-      title: "Выбери лучший сценарий",
-      description: "Дешевле / быстрее / удобнее — по твоему приоритету.",
-    },
-  ];
-
-  // карточки функционала — пока с заглушками, потом заменишь тексты
-  const features: FeatureCard[] = [
-    {
-      tag: "Сравнение",
-      title: "Считаем корзину целиком",
       description:
-        "Не по одному товару: считаем итоговую сумму всей корзины в каждом магазине.",
-      stat: "до −10% в месяц",
-      highlight: true,
+        "Добавляй продукты как обычно — без переключений между приложениями.",
+      imageSrc: "/phoneCatalogPortrait.png",
+      imageAlt: "Экран каталога и выбора товаров",
     },
     {
-      tag: "Доставка",
-      title: "Учитываем доставку в итоговом чеке",
+      number: "03",
+      title: "Сравни цены",
       description:
-        "Сравнение честное: цена товаров + доставка + условия по времени и адресу.",
-      stat: "меньше сюрпризов",
-    },
-    {
-      tag: "Промо",
-      title: "Подтягиваем акции и промокоды",
-      description:
-        "Если в магазине есть выгодное промо — оно учитывается автоматически.",
-      stat: "больше выгод",
-    },
-    {
-      tag: "Сценарии",
-      title: "Показываем 2–3 лучших варианта",
-      description:
-        "Не один “самый дешёвый”, а понятные сценарии под разные приоритеты.",
-      stat: "выбор без хаоса",
-    },
-    {
-      tag: "Прозрачность",
-      title: "Объясняем, почему так выгоднее",
-      description:
-        "Показываем, что именно повлияло: цена, доставка, акции, замены и т.д.",
-      stat: "доверие к расчёту",
+        "Покажем 2–3 сценария: дешевле / быстрее / удобнее — выбирай лучший.",
+      imageSrc: "/phoneCartPortrait.png",
+      imageAlt: "Экран сравнения вариантов корзины",
     },
   ];
 
   return (
     <section id="how" className="section relative">
-      {/* лёгкий локальный glow, чтобы секция была “живой”, но не шумной */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div
-          className="absolute -top-24 right-[10%] h-[320px] w-[320px] rounded-full blur-3xl"
-          style={{ background: "rgba(254,105,0,0.10)" }}
+          className="absolute -top-28 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full blur-3xl"
+          style={{ background: "rgba(254,105,0,0.06)" }}
         />
       </div>
 
-      <div className="container-page">
-        <div className="max-w-3xl">
-          <h2 className="section-title text-slate-900">
-            Как работает <span style={{ color: "#FE6900" }}>Корзина</span>
-          </h2>
-          <p className="section-subtitle">
-            Собираешь корзину один раз — мы считаем варианты по магазинам,
-            доставке и промо и показываем, где выгоднее оформить заказ.
-          </p>
-        </div>
-
-        {/* Компактные шаги (3 штуки) */}
-        <div className="mt-8 grid gap-3 md:grid-cols-3">
-          {steps.map((s, i) => (
-            <div
-              key={s.title}
-              className="korzina-glass rounded-2xl p-4 shadow-soft"
-            >
-              <div className="flex items-center gap-3">
-                <div
-                  className="h-9 w-9 rounded-full flex items-center justify-center text-sm font-semibold"
-                  style={{
-                    background: "rgba(254,105,0,0.10)",
-                    color: "#FE6900",
-                  }}
-                >
-                  {i + 1}
-                </div>
-                <div className="font-semibold text-slate-900">{s.title}</div>
-              </div>
-              <p className="mt-2 text-sm text-slate-600">{s.description}</p>
+      <div className="mx-auto max-w-7xl px-4">
+        <div className="rounded-[40px] bg-white border border-black/5 shadow-soft overflow-hidden">
+          <div className="px-6 py-8 md:px-10 md:py-10">
+            <div className="">
+              <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-slate-900">
+                Как работает{" "}
+                <span style={{ color: ORANGE, fontSize: "1.1em" }}>
+                  Корзина
+                </span>
+              </h2>
+              <p className="mt-3 text-base md:text-lg text-slate-600">
+                Три шага — и у тебя готова корзина с понятными вариантами, где
+                выгоднее оформить заказ.
+              </p>
             </div>
-          ))}
-        </div>
 
-        {/* Карточки функционала */}
-        <div className="mt-10">
-          {/* Desktop grid */}
-          <div className="hidden md:grid gap-6 md:grid-cols-3">
-            {features.map((f) => (
-              <Feature
-                key={f.title}
-                {...f}
-                className={f.highlight ? "md:col-span-2" : ""}
-              />
-            ))}
-          </div>
+            <div className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
+              {steps.map((step) => (
+                <div key={step.number} className="flex flex-col">
+                  {/* Big number + smaller title under it */}
+                  <div className="leading-none">
+                    <div
+                      className="text-[44px] md:text-[54px] font-semibold tracking-tight text-center"
+                      style={{ color: ORANGE }}
+                    >
+                      {step.number}
+                    </div>
+                    <div className="text-lg md:text-xl font-semibold text-slate-900 text-center">
+                      {step.title}
+                    </div>
+                  </div>
 
-          {/* Mobile “slider” without libs */}
-          <div className="md:hidden -mx-4 px-4">
-            <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2">
-              {features.map((f) => (
-                <div key={f.title} className="snap-start min-w-[280px]">
-                  <Feature {...f} />
+                  <div className="mt-6 relative">
+                    {/* Шире/крупнее экран */}
+                    <div className="relative mx-auto w-[260px] md:w-[270px] overflow-hidden">
+                      {/* Обрезаем снизу на ~40px */}
+                      <div
+                        className="relative"
+                        style={{ marginBottom: "-100px" }}
+                      >
+                        <Image
+                          src={step.imageSrc}
+                          alt={step.imageAlt}
+                          width={520}
+                          height={980}
+                          className="w-full h-auto select-none"
+                          priority={step.number === "01"}
+                        />
+                      </div>
+
+                      {/* Blur/fade снизу (переходит полностью в белый) */}
+                      <div
+                        aria-hidden
+                        className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%]"
+                        style={{
+                          background:
+                            "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.55) 22%, rgba(255,255,255,0.9) 62%, rgba(255,255,255,1) 100%)",
+                          WebkitBackdropFilter: "blur(10px)",
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div className="mt-6 relative top-[-50px] px-4">
+                    <div
+                      className="rounded-[24px] px-5 py-4 text-center shadow-soft"
+                      style={{
+                        background: "rgba(254,105,0,0.8)",
+                        color: "white",
+                      }}
+                    >
+                      <p className="text-[17px] md:text-[16px] leading-[1.5] font-semibold ">
+                        {step.description}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               ))}
-            </div>
-            <div className="mt-2 text-xs text-slate-500">
-              Листай карточки влево → вправо
             </div>
           </div>
         </div>
       </div>
     </section>
-  );
-}
-
-function Feature({
-  tag,
-  title,
-  description,
-  stat,
-  className = "",
-  highlight,
-}: {
-  tag: string;
-  title: string;
-  description: string;
-  stat?: string;
-  className?: string;
-  highlight?: boolean;
-}) {
-  return (
-    <div
-      className={[
-        "korzina-glass rounded-3xl p-6 shadow-soft relative overflow-hidden",
-        className,
-      ].join(" ")}
-    >
-      {/* subtle inner glow */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute -top-20 -right-20 h-48 w-48 rounded-full blur-3xl"
-        style={{ background: "rgba(254,105,0,0.10)" }}
-      />
-
-      <div className="relative">
-        <div className="flex items-center justify-between gap-3">
-          <span
-            className="inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold"
-            style={{
-              background: "rgba(254,105,0,0.10)",
-              color: "#FE6900",
-              border: "1px solid rgba(0,0,0,0.06)",
-            }}
-          >
-            {tag}
-          </span>
-
-          {stat ? (
-            <span className="text-xs font-semibold text-slate-700">{stat}</span>
-          ) : null}
-        </div>
-
-        <div className="mt-3 text-lg font-semibold text-slate-900">{title}</div>
-        <p className="mt-2 text-sm text-slate-600">{description}</p>
-
-        {highlight ? (
-          <div className="mt-4 text-sm text-slate-700">
-            <span className="font-semibold">Идея:</span> этот блок можно позже
-            заменить на реальный кейс/скрин “Корзина посчитала 3 сценария”.
-          </div>
-        ) : null}
-      </div>
-    </div>
   );
 }

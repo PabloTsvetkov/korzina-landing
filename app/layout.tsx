@@ -22,19 +22,26 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="ru">
       <body className={`${inter.className} relative overflow-x-hidden`}>
         {/* Глобальный фон */}
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 -z-20 bg-korzina-canvas"
+          className="pointer-events-none fixed inset-0 -z-30 bg-korzina-canvas"
         />
-        {/* Лёгкий шум (дорогой эффект) */}
         <div
           aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10 bg-korzina-noise opacity-[0.10]"
+          className="pointer-events-none fixed inset-0 -z-20 bg-korzina-grid opacity-[0.35]"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none fixed inset-0 -z-10 bg-korzina-noise opacity-[0.06]"
         />
 
         <div className="min-h-screen flex flex-col">
@@ -43,7 +50,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
           <footer className="mt-12">
             <div className="container-page py-8 text-sm text-slate-500 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>© {new Date().getFullYear()} Корзина. Все права защищены.</div>
+              <div>
+                © {new Date().getFullYear()} Корзина. Все права защищены.
+              </div>
               <div className="flex flex-wrap gap-4">
                 <a href="/privacy" className="hover:text-slate-700">
                   Политика конфиденциальности

@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import FAQSection from "./components/FAQSection";
 import HeroSection from "./components/HeroSection";
 import HowItWorksSection from "./components/HowItWorksSection";
+import SavingSection from "./components/SavingSection";
 
 export const dynamic = "force-static"; // явно говорим, что эта страница статическая
 
@@ -24,84 +25,6 @@ export default function HomePage() {
       <FAQSection />
       <CTASection />
     </>
-  );
-}
-
-/* ===== SAVING SECTION ===== */
-
-function SavingSection() {
-  const items = [
-    {
-      // title: "название топика",
-      title: "Считаем всю корзину целиком",
-      description:
-        "Не сравниваем отдельные продукты, а учитываем сумму всей корзины с доставкой и скидками.",
-      // "описание топика",
-      value: "до 10%",
-      label: "экономия в месяц",
-    },
-    // {
-    //   // title: "карточка",
-    //   title: "Считаем всю корзину целиком",
-    //   description:
-    //     "Не сравниваем отдельные продукты, а учитываем сумму всей корзины с доставкой и скидками.",
-    //   // "описание карточки",
-    //   value: "число",
-    //   label: "лейбл",
-    // },
-    {
-      title: "Оптимизируем доставку",
-      description:
-        "Выбираем вариант, где итоговый чек + доставка для тебя выгоднее, а не просто минимальная цена товара.",
-      value: "–15%",
-      label: "средняя экономия на доставке",
-    },
-    {
-      title: "Учитываем акции и промо",
-      description:
-        "Подтягиваем промо и спецпредложения партнёрских магазинов, чтобы не переплачивать.",
-      value: "x2",
-      label: "больше использованных акций",
-    },
-  ];
-
-  return (
-    <section id="saving" className="section">
-      <div className="container-page">
-        <h2 className="section-title text-korzina-primary">
-          Где появляется экономия
-        </h2>
-        <p className="section-subtitle text-korzina-textMuted">
-          Пользователь просто собирает корзину. Корзина под капотом
-          пересчитывает варианты по магазинам, доставке и промо, показывая
-          оптимальный путь.
-          {/* Здесь тоже какое-нибудь небольшое описание работы */}
-        </p>
-
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {items.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-2xl border border-korzina-primary/20 bg-korzina-bg p-5 shadow-soft"
-            >
-              <div className="text-xs uppercase tracking-wide text-korzina-primary mb-2">
-                {item.label}
-              </div>
-              <div className="text-3xl font-semibold mb-3 text-korzina-accent">
-                {/* <div className="text-xl"> */}
-                {item.value}
-              </div>
-              <div className="font-medium text-korzina-text mb-2">
-                {item.title}
-              </div>
-              <div className="text-sm text-korzina-textMuted">
-                {item.description}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
   );
 }
 

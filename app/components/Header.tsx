@@ -12,7 +12,6 @@ export default function Header() {
     () => [
       { id: "how", label: "Как это работает" },
       { id: "saving", label: "Экономия" },
-      { id: "b2b", label: "Для партнёров" },
       { id: "faq", label: "FAQ" },
     ],
     []

@@ -41,7 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <Header />
           <main className="flex-1">{children}</main>
 
-          <footer className="border-t border-black/10 mt-12">
+          <footer className="mt-12">
             <div className="container-page py-8 text-sm text-slate-500 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
               <div>© {new Date().getFullYear()} Корзина. Все права защищены.</div>
               <div className="flex flex-wrap gap-4">

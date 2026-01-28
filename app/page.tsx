@@ -4,6 +4,7 @@ import FAQSection from "./components/FAQSection";
 import HeroSection from "./components/HeroSection";
 import HowItWorksSection from "./components/HowItWorksSection";
 import SavingSection from "./components/SavingSection";
+import CTASection from "./components/CTASection";
 
 export const dynamic = "force-static"; // явно говорим, что эта страница статическая
 
@@ -94,38 +95,6 @@ function B2BSection() {
             {/* <button className="mt-4 inline-flex items-center justify-center rounded-full border border-korzina-primary/70 px-2 py-1 text-sm font-medium text-korzina-primary"> */}
             ?Конпка на презу?
           </button>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ===== CTA SECTION ===== */
-
-function CTASection() {
-  return (
-    <section className="section bg-gradient-to-r from-korzina-accent to-korzina-accentDark">
-      {/* <section className="section"> */}
-      <div className="container-page flex flex-col md:flex-row items-center justify-between gap-6 text-korzina-text">
-        <div>
-          <h2 className="text-2xl md:text-3xl font-semibold mb-2">
-            Попробуй собрать свою первую корзину в Корзине
-          </h2>
-          <p className="text-sm md:text-base text-korzina-textMuted max-w-xl">
-            Старт занимает пару минут. Собери корзину как обычно — мы покажем,
-            где выгоднее оформить заказ.
-            {/* маленько описать */}
-          </p>
-        </div>
-        <div className="flex flex-col sm:flex-row gap-3">
-          <button className="rounded-full bg-korzina-primary px-6 py-2.5 text-sm font-medium text-white hover:bg-korzina-primaryDark transition">
-            Скачать приложение
-          </button>
-          <button className="rounded-full border border-korzina-text/40 px-6 py-2.5 text-sm font-medium text-korzina-text hover:bg-korzina-bg/70 transition">
-            Презентация для партнёров
-          </button>
-          {/* тоже не особо придумал что, но наверное кнопки на скачивание и
-          возможно презентацию еще раз */}
         </div>
       </div>
     </section>

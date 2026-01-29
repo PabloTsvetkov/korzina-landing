@@ -14,7 +14,7 @@ export default function CTASection() {
       className="relative py-14 md:py-16"
       style={{
         background:
-          "linear-gradient(90deg, rgba(254,105,0,0.06) 0%, rgba(254,105,0,0.14) 50%, rgba(254,105,0,0.06) 100%)",
+          "linear-gradient(90deg, rgba(254,105,0,0.26) 0%, rgba(254,105,0,0.36) 50%, rgba(254,105,0,0.26) 100%)",
       }}
       id="CTA"
     >

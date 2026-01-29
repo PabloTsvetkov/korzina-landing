@@ -82,9 +82,9 @@ export default function HeroSection() {
           </div>
 
           <div className="flex flex-wrap gap-4 text-xs text-slate-600">
-            <span>∙ Экономия на доставке</span>
-            <span>∙ Учитываем акции и промо</span>
-            <span>∙ Путь клиента от корзины до чека</span>
+            <span>∙ Экономим деньги</span>
+            <span>∙ Экономим время</span>
+            <span>∙ Упрощаем выбор</span>
           </div>
         </div>
 

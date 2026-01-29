@@ -146,9 +146,9 @@ export default function Header() {
                 src="/logo+text_horizontal_no_bg.png"
                 alt="Корзина"
                 width={240}
-                height={80}
+                height={70}
                 priority
-                className="h-8 md:h-10 w-auto"
+                className="h-10 md:h-[55px] w-auto"
               />
               {/* Если у тебя логотип-изображение уже содержит текст — этот span можно убрать.
                   Но ты просил “Onest Medium для шрифта лого” — оставляю как опционально. */}
@@ -341,10 +341,6 @@ export default function Header() {
             Получить бета-доступ
             <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
           </button>
-
-          <div className="mt-3 text-xs text-slate-600">
-            Нажми на раздел — прокручу страницу и закрою меню.
-          </div>
         </div>
       </div>
 

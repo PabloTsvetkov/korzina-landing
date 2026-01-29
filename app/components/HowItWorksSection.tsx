@@ -19,7 +19,7 @@ export default function HowItWorksSection() {
       number: "01",
       title: "Выбери магазин",
       description:
-        "Укажи предпочтения — адрес и время. Мы покажем подходящие варианты.",
+        "Укажи адрес и время — мы подберём магазины, которые доставят тебе удобно и вовремя.",
       imageSrc: "/phoneShopsPortrait.png",
       imageAlt: "Экран выбора магазина",
     },
@@ -27,7 +27,7 @@ export default function HowItWorksSection() {
       number: "02",
       title: "Собери корзину",
       description:
-        "Добавляй продукты как обычно — без переключений между приложениями.",
+        "Добавляй продукты как обычно — без переключений между магазинами.",
       imageSrc: "/phoneCatalogPortrait.png",
       imageAlt: "Экран каталога и выбора товаров",
     },
@@ -35,7 +35,7 @@ export default function HowItWorksSection() {
       number: "03",
       title: "Сравни цены",
       description:
-        "Покажем 2–3 сценария: дешевле / быстрее / удобнее — выбирай лучший.",
+        "Покажем разные варианты: где дешевле, быстрее или удобнее — выбирай лучший.",
       imageSrc: "/phoneCartPortrait.png",
       imageAlt: "Экран сравнения вариантов корзины",
     },

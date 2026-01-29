@@ -29,20 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body className={`${inter.className} relative overflow-x-hidden`}>
-        {/* Глобальный фон */}
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-30 bg-korzina-canvas"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-20 bg-korzina-grid opacity-[0.35]"
-        />
-        <div
-          aria-hidden
-          className="pointer-events-none fixed inset-0 -z-10 bg-korzina-noise opacity-[0.06]"
-        />
+      <body className={`${inter.className} relative overflow-x-hidden bg-[rgba(254,105,0,0.18)]`}>
 
         <div className="min-h-screen flex flex-col">
           <Header />

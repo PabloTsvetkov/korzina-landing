@@ -5,6 +5,7 @@ import HeroSection from "./components/HeroSection";
 import SavingSection from "./components/SavingSection";
 import CTASection from "./components/CTASection";
 import HowItWorksSection from "./components/HowItWorksSection";
+import CompareSection from "./components/CompareSection";
 
 export const dynamic = "force-static"; // явно говорим, что эта страница статическая
 
@@ -22,6 +23,7 @@ export default function HomePage() {
       <HeroSection />
       <HowItWorksSection />
       <SavingSection />
+      <CompareSection />
       {/* <B2BSection /> */}
       <FAQSection />
       <CTASection />

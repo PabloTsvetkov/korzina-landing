@@ -3,17 +3,43 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <section className="section relative">
-      {/* Hero glow (чуть ярче, чем остальной сайт) */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
-        <div
-          className="absolute -top-28 left-1/2 h-[460px] w-[820px] -translate-x-1/2 rounded-full blur-3xl"
-          style={{ background: "rgba(254,105,0,0.22)" }}
-        />
-        <div
-          className="absolute top-36 left-[8%] h-[260px] w-[260px] rounded-full blur-3xl"
-          style={{ background: "rgba(254,105,0,0.10)" }}
-        />
-      </div>
+{/* White glow spots (только под зоной текста слева) */}
+<div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
+  {/* cluster under text */}
+  <div
+    className="absolute top-8 left-[10%] h-[300px] w-[300px] rounded-full blur-3xl"
+    style={{ background: "rgba(255,255,255,0.44)" }}
+  />
+  <div
+    className="absolute top-20 left-[18%] h-[320px] w-[320px] rounded-full blur-3xl"
+    style={{ background: "rgba(255,255,255,0.48)" }}
+  />
+  <div
+    className="absolute top-36 left-[10%] h-[280px] w-[280px] rounded-full blur-3xl"
+    style={{ background: "rgba(255,255,255,0.44)" }}
+  />
+
+  {/* extend brightness further to the right but still within text area */}
+  <div
+    className="absolute top-20 left-[30%] h-[320px] w-[360px] rounded-full blur-3xl"
+    style={{ background: "rgba(255,255,255,0.44)" }}
+  />
+  <div
+    className="absolute top-44 left-[38%] h-[300px] w-[380px] rounded-full blur-3xl"
+    style={{ background: "rgba(255,255,255,0.40)" }}
+  />
+
+  {/* lower part under buttons/subtext */}
+  <div
+    className="absolute top-[56%] left-[12%] h-[320px] w-[520px] rounded-full blur-3xl"
+    style={{ background: "rgba(255,255,255,0.40)" }}
+  />
+  <div
+    className="absolute top-[62%] left-[34%] h-[300px] w-[480px] rounded-full blur-3xl"
+    style={{ background: "rgba(255,255,255,0.36)" }}
+  />
+</div>
+
 
       <div className="container-page grid gap-10 md:grid-cols-[1.2fr,1fr] items-center">
         {/* LEFT */}

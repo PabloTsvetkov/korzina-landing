@@ -11,7 +11,8 @@ export default function Header() {
   const navItems: NavItem[] = useMemo(
     () => [
       { id: "how", label: "Как это работает" },
-      { id: "saving", label: "Экономия" },
+      { id: "can", label: "Возможности" },
+      { id: "compare", label: "Сравнение" },
       { id: "faq", label: "FAQ" },
     ],
     [],
@@ -51,8 +52,8 @@ export default function Header() {
       {
         // “Лучший” баланс для лендингов
         root: null,
-        rootMargin: "-30% 0px -40% 0px",
-        threshold: [0.1, 0.25, 0.5],
+        rootMargin: "-20% 0px -20% 0px",
+        threshold: [0],
       },
     );
 

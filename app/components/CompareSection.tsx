@@ -109,8 +109,6 @@ export default function CompareSection() {
                 </ul>
               </div>
             </div>
-
-            <div className="mt-10 h-px w-full bg-black/5" />
           </div>
         </div>
       </div>

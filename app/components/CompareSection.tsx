@@ -1,215 +1,119 @@
+// app/components/CompareSection.tsx
 "use client";
 
-import { useMemo, useState } from "react";
-
-type StoreScenario = {
-  name: string;
-  total: number; // итог
-  items: number; // товары
-  delivery: number; // доставка
-  promo: number; // скидка/промо (положительное число)
-  badge?: string;
-};
+import Image from "next/image";
 
 const ORANGE = "#FE6900";
 
+type Item = { text: string };
+
 export default function CompareSection() {
-  // Демонстрационные числа (пока условные) — позже заменишь на реальные/пример из ресерча
-  const scenarios: StoreScenario[] = useMemo(
-    () => [
-      {
-        name: "Магазин A",
-        items: 1710,
-        delivery: 149,
-        promo: 120,
-        total: 1739,
-        badge: "лучше по цене",
-      },
-      {
-        name: "Магазин B",
-        items: 1650,
-        delivery: 249,
-        promo: 80,
-        total: 1819,
-        badge: "быстрее",
-      },
-      {
-        name: "Магазин C",
-        items: 1760,
-        delivery: 99,
-        promo: 0,
-        total: 1859,
-        badge: "доставка дешевле",
-      },
-    ],
-    [],
-  );
+  const korzinaItems: Item[] = [
+    { text: "Собираешь корзину один раз — мы сравниваем цены" },
+    { text: "Считаем итог: товары + доставка + акции" },
+    { text: "Показываем несколько наиболее подходящих вариантов" },
+  ];
 
-  const minTotal = Math.min(...scenarios.map((s) => s.total));
-  const maxTotal = Math.max(...scenarios.map((s) => s.total));
-
-  const [mode, setMode] = useState<"manual" | "korzina">("korzina");
+  const manualItems: Item[] = [
+    { text: "Переключаешься между несколькими приложениями магазинов" },
+    { text: "Собираешь одну и ту же корзину каждый раз заново" },
+    { text: "Легко пропустить самый выгодный вариант" },
+  ];
 
   return (
     <section id="compare" className="section relative">
-      <div className="container-page mt-10 korzina-glass rounded-3xl shadow-soft p-6 md:p-7 max-w-3xl">
-        <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-          <div>
-            <div className="text-lg font-semibold text-slate-900">
-              Вручную или с Корзиной?
-            </div>
-            <div className="mt-1 text-sm text-slate-600">
-              Сравнение подходов — почему “вручную” почти всегда неудобно.
-            </div>
-          </div>
-
-          <div className="relative inline-flex rounded-full border border-black/10 bg-white/60 p-1 shadow-soft">
-            {/* moving background */}
-            <span
-              aria-hidden
-              className="absolute top-1 bottom-1 left-1 rounded-full transition-all duration-300 ease-out"
-              style={{
-                width: "calc(50% - 4px)",
-                transform: `translateX(${mode === "korzina" ? "100%" : "0%"})`,
-                background:
-                  "linear-gradient(135deg, rgba(254,105,0,0.22), rgba(254,105,0,0.38))",
-                boxShadow: "0 8px 24px rgba(254,105,0,0.25)",
-              }}
-            />
-
-            <button
-              type="button"
-              onClick={() => setMode("manual")}
-              className={[
-                "relative z-10",
-                "rounded-full px-5 py-2 text-sm font-semibold",
-                "transition-colors duration-200",
-                mode === "manual"
-                  ? "text-slate-900"
-                  : "text-slate-600 hover:text-slate-900",
-              ].join(" ")}
-            >
-              Вручную
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setMode("korzina")}
-              className={[
-                "relative z-10",
-                "rounded-full px-5 py-2 text-sm font-semibold",
-                "transition-colors duration-200",
-                mode === "korzina"
-                  ? "text-slate-900"
-                  : "text-slate-600 hover:text-slate-900",
-              ].join(" ")}
-            >
-              &nbsp;&nbsp;С Корзиной
-            </button>
-          </div>
-        </div>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          <BulletList
-            title={mode === "manual" ? "Что происходит" : "Что происходит"}
-            accent={mode === "korzina"}
-            items={
-              mode === "manual"
-                ? [
-                    "Переключаешься между 2–4 приложениями",
-                    "Собираешь корзину заново в каждом",
-                    "Трудно учесть доставку и промо одновременно",
-                    "Легко упустить акцию или ошибиться",
-                  ]
-                : [
-                    "Собираешь корзину один раз",
-                    "Мы считаем товары + доставку + промо",
-                    "Показываем 2–3 лучших сценария",
-                    "Понятно, почему этот вариант выгоднее",
-                  ]
-            }
-          />
-
-          <div className="rounded-2xl bg-white/50 border border-black/5 p-5">
-            <div className="text-xs uppercase tracking-wide text-slate-600">
-              Результат
+      <div className="container-page">
+        <div className="rounded-[40px] bg-white border border-black/5 shadow-soft overflow-hidden">
+          <div className="px-6 py-8 md:px-10 md:py-10">
+            <div className="max-w-3xl">
+              <h2 className="section-title text-slate-900">
+                Вручную или с{" "}
+                <span style={{ color: ORANGE, fontSize: "1.1em" }}>Корзиной</span>?
+              </h2>
+              <p className="section-subtitle">
+                Сравнение подходов — почему с Корзиной быстрее, проще и понятнее выбрать лучший вариант.
+              </p>
             </div>
 
-            <div className="mt-2 text-sm text-slate-700 leading-relaxed">
-              {mode === "manual" ? (
-                <>
-                  Ты тратишь время на сбор одинаковой корзины и всё равно можешь
-                  выбрать не лучший итог из-за доставки или промо.
-                </>
-              ) : (
-                <>
-                  Ты получаешь лучший итоговый чек без лишних действий:
-                  выбираешь “дешевле / быстрее / удобнее” — и идёшь оформлять
-                  заказ.
-                </>
-              )}
-            </div>
+            <div className="mt-10 grid gap-6 md:grid-cols-2">
+              {/* With Korzina */}
+              <div className="rounded-[28px] border border-black/5 bg-white p-7 md:p-8 shadow-soft ring-1 ring-[rgba(254,105,0,0.18)]">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <div className="text-lg md:text-xl font-semibold text-slate-900">
+                      С <span style={{ color: ORANGE }}>Корзиной</span>
+                    </div>
+                    <div className="mt-1 text-base md:text-lg text-slate-600">
+                      Быстро и понятно
+                    </div>
+                  </div>
 
-            <div className="mt-4 h-px bg-black/5" />
+                  <span
+                    aria-hidden
+                    className="mt-2 inline-flex h-3.5 w-3.5 rounded-full"
+                    style={{ background: "rgba(254,105,0,0.22)" }}
+                  />
+                </div>
 
-            <div className="mt-4 flex items-center justify-between text-sm">
-              <div className="text-slate-600">Приоритет</div>
-              <div className="font-semibold" style={{ color: ORANGE }}>
-                {mode === "manual" ? "путается" : "понятный выбор"}
+                <ul className="mt-7 space-y-5">
+                  {korzinaItems.map((it) => (
+                    <li key={it.text} className="flex gap-4">
+                      <Image
+                        src="/icons/fullBasketGreen.png"
+                        alt=""
+                        width={28}
+                        height={28}
+                        className="mt-1 shrink-0 w-[28px] h-[28px]"
+                      />
+                      <span className="text-[16px] md:text-[18px] leading-relaxed text-slate-900 font-semibold">
+                        {it.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Manual */}
+              <div className="rounded-[28px] border border-black/5 bg-white p-7 md:p-8 shadow-soft">
+                <div className="flex items-start justify-between gap-4">
+                  <div>
+                    <div className="text-lg md:text-xl font-semibold text-slate-900">
+                      Вручную
+                    </div>
+                    <div className="mt-1 text-base md:text-lg text-slate-600">
+                      Долго и невыгодно
+                    </div>
+                  </div>
+
+                  <span
+                    aria-hidden
+                    className="mt-2 inline-flex h-3.5 w-3.5 rounded-full bg-black/10"
+                  />
+                </div>
+
+                <ul className="mt-7 space-y-5">
+                  {manualItems.map((it) => (
+                    <li key={it.text} className="flex gap-4">
+                      <Image
+                        src="/icons/emptyBasketRed.png"
+                        alt=""
+                        width={28}
+                        height={28}
+                        className="mt-1 shrink-0 w-[28px] h-[28px]"
+                      />
+                      <span className="text-[16px] md:text-[18px] leading-relaxed text-slate-800 font-semibold">
+                        {it.text}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
+
+            <div className="mt-10 h-px w-full bg-black/5" />
           </div>
         </div>
       </div>
     </section>
   );
-}
-
-function Reason({ title, text }: { title: string; text: string }) {
-  return (
-    <div className="rounded-2xl bg-white/50 border border-black/5 p-4">
-      <div className="font-semibold text-slate-900">{title}</div>
-      <div className="mt-1 text-sm text-slate-600">{text}</div>
-    </div>
-  );
-}
-
-function BulletList({
-  title,
-  items,
-  accent,
-}: {
-  title: string;
-  items: string[];
-  accent?: boolean;
-}) {
-  return (
-    <div className="rounded-2xl bg-white/50 border border-black/5 p-5">
-      <div className="text-xs uppercase tracking-wide text-slate-600">
-        {title}
-      </div>
-      <ul className="mt-3 space-y-3 text-sm text-slate-700">
-        {items.map((t) => (
-          <li key={t} className="flex gap-3">
-            <span
-              className="mt-2 h-1.5 w-1.5 rounded-full"
-              style={{
-                backgroundColor: accent ? ORANGE : "rgba(15,23,42,0.35)",
-              }}
-            />
-            <span>{t}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-function formatRUB(n: number) {
-  // простая локальная форматировка без Intl (чтобы было предсказуемо)
-  const s = String(n);
-  const parts: string[] = [];
-  for (let i = s.length; i > 0; i -= 3)
-    parts.unshift(s.substring(Math.max(0, i - 3), i));
-  return `${parts.join(" ")} ₽`;
 }

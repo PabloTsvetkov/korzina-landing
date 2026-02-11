@@ -43,11 +43,9 @@ export default function Modal({
   submitLabel = "Отправить",
   mode = "beta",
   fields,
-  onSubmit,
 }: ModalProps) {
   const panelRef = useRef<HTMLDivElement | null>(null);
 
-  // ⬇️ NEW: 2 обязательных поля: имя + почта/телеграм
   const resolvedFields: ModalField[] = useMemo(() => {
     const beta: ModalField[] = [
       {
@@ -113,20 +111,19 @@ export default function Modal({
   const [form, setForm] = useState<FormState>(initialForm);
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
+  const [serverError, setServerError] = useState<string>("");
 
-  // ⬇️ NEW: ошибки по полям (для красной обводки)
   const [fieldErrors, setFieldErrors] = useState<Record<string, boolean>>({});
 
-  // reset when opened / fields changed
   useEffect(() => {
     if (!open) return;
     setForm(initialForm);
     setSent(false);
     setSending(false);
     setFieldErrors({});
+    setServerError("");
   }, [open, initialForm]);
 
-  // lock body scroll while open
   useEffect(() => {
     if (!open) return;
     const prev = document.body.style.overflow;
@@ -136,7 +133,6 @@ export default function Modal({
     };
   }, [open]);
 
-  // close on ESC
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (e: KeyboardEvent) => {
@@ -153,11 +149,9 @@ export default function Modal({
 
   const update = (name: string, value: string) => {
     setForm((prev) => ({ ...prev, [name]: value }));
-    // ⬇️ NEW: как только пользователь начинает заполнять — убираем красную рамку
     setFieldErrors((prev) => ({ ...prev, [name]: false }));
   };
 
-  // ⬇️ NEW: валидация без общего текста ошибки — только подсветка полей
   const validateFields = (): boolean => {
     const nextErrors: Record<string, boolean> = {};
 
@@ -166,7 +160,6 @@ export default function Modal({
       if (f.required && !v) nextErrors[f.name] = true;
     }
 
-    // доп.проверка для contact: либо email, либо telegram (простая)
     const contact = String(form["contact"] ?? "").trim();
     if (contact) {
       const isEmail = /^\S+@\S+\.\S+$/.test(contact);
@@ -182,28 +175,35 @@ export default function Modal({
     e.preventDefault();
     if (sending || sent) return;
 
+    setServerError("");
+
     const ok = validateFields();
     if (!ok) return;
 
     setSending(true);
 
     try {
-      const payload: ModalPayload = { mode };
+      const payload: ModalPayload & { page?: string } = { mode };
       for (const k of Object.keys(form)) payload[k] = form[k];
+      payload.page = typeof window !== "undefined" ? window.location.href : "";
 
-      if (onSubmit) {
-        await onSubmit(payload);
-      } else {
-        // заглушка — позже заменишь на API route
-        await new Promise((r) => setTimeout(r, 600));
-        console.log("Modal submit:", payload);
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        setServerError("Ошибка отправки. Попробуйте позже.");
+        return;
       }
 
-      // ⬇️ NEW: показать "отправлено" и закрыть через 2 секунды
       setSent(true);
       setTimeout(() => {
         onClose();
       }, 3500);
+    } catch {
+      setServerError("Ошибка отправки. Попробуйте позже.");
     } finally {
       setSending(false);
     }
@@ -285,6 +285,12 @@ export default function Modal({
                 hasError={!!fieldErrors[f.name]}
               />
             ))}
+
+            {serverError ? (
+              <div className="rounded-2xl border border-black/10 bg-black/[0.03] px-4 py-3 text-sm text-slate-700">
+                {serverError}
+              </div>
+            ) : null}
 
             {sent ? (
               <div className="rounded-2xl border border-black/10 bg-white px-4 py-3 text-m text-slate-700">

@@ -2,8 +2,9 @@
 
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
-// Если у тебя есть lucide-react — можно оставить. Если нет, замени на простые SVG.
+
 import { Menu, X, ArrowRight } from "lucide-react";
+import Modal from "./Modal";
 
 type NavItem = { id: string; label: string };
 
@@ -21,6 +22,7 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [activeId, setActiveId] = useState<string>("how");
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   // 1) “Лучшие лендинги” — shrink/blur при скролле
   useEffect(() => {
@@ -94,10 +96,7 @@ export default function Header() {
   };
 
   const onBetaClick = () => {
-    // TODO: вставь свою логику (модалка, форма, роут, etc.)
-    // Например, scrollToId("cta") или открыть modal
-    // scrollToId("cta");
-    console.log("beta click");
+    setOpenModal(true);
     setMobileOpen(false);
   };
 
@@ -346,6 +345,12 @@ export default function Header() {
 
       {/* Spacer чтобы контент не уезжал под fixed header */}
       <div className="h-[84px] md:h-[104px]" aria-hidden="true" />
+      <Modal
+        open={openModal}
+        onClose={() => setOpenModal(false)}
+        title="Записаться на бета-тестирование"
+        mode="beta"
+      />
     </>
   );
 }

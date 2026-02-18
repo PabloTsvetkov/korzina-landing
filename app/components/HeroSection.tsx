@@ -61,7 +61,7 @@ export default function HeroSection() {
           {/* LEFT */}
           <div className="space-y-6">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/60 backdrop-blur-xl px-3 py-1 text-xs text-slate-700 shadow-soft">
+            <div className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white/60 backdrop-blur-xl px-3 py-1 text-xs text-slate-700 shadow-soft mt-[15px] sm:mt-0">
               <span
                 className="h-2 w-2 rounded-full"
                 style={{ backgroundColor: "#FE6900" }}
@@ -70,7 +70,7 @@ export default function HeroSection() {
               <span className="font-semibold">10% на продуктах</span>
             </div>
 
-            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900">
+            <h1 className="text-3xl md:text-5xl font-semibold tracking-tight text-slate-900 sm:!mt-[20px] !mt-2">
               Один сервис — вся{" "}
               <span style={{ color: "#FE6900" }}>корзина продуктов</span> из
               разных магазинов.
@@ -107,7 +107,7 @@ export default function HeroSection() {
           </div>
 
           {/* RIGHT (phone + glow card) */}
-          <div className="relative flex justify-center md:justify-end top-[70px]">
+          <div className="relative justify-center md:justify-end top-[70px] hidden sm:flex">
             {/* phone glow */}
             <div
               aria-hidden

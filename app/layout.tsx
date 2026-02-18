@@ -31,9 +31,9 @@ export default function RootLayout({
     <html lang="ru">
       {/* <body className={`${inter.className} relative overflow-x-hidden bg-[rgba(254,105,0,0.18)]`}> */}
       <body
-        className={`${inter.className} relative overflow-x-hidden bg-[url('/bg_image.png')] h-screen w-full bg-cover bg-center bg-no-repeat bg-fixed`}
+        className={`${inter.className} relative overflow-x-hidden bg-[url('/bg_image.png')] h-screen w-full bg-cover bg-center bg-no-repeat bg-fixed max-w-[100vw]`}
       >
-        <div className="min-h-screen flex flex-col">
+        <div className="min-h-screen flex flex-col max-w-[100vw] overflow-x-hidden">
           <Header />
           <main className="flex-1">{children}</main>
 

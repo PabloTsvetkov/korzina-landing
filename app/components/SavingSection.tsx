@@ -409,11 +409,6 @@ export default function SavingSection() {
               </span>
             </button>
           </div>
-
-          {/* маленькая подсказка для мобилок (можно убрать) */}
-          <p className="mt-3 text-center text-xs text-slate-500 md:hidden">
-            Листай свайпом вправо/влево
-          </p>
         </div>
       </div>
     </section>

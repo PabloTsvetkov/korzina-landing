@@ -263,7 +263,7 @@ export default function Header() {
         <div
           id="mobile-menu"
           className={[
-            "absolute left-3 right-3 top-[72px]",
+            "absolute left-3 right-3 top-[77px]",
             "rounded-3xl",
             "border border-white/40",
             "bg-white/70 backdrop-blur-2xl",
@@ -276,7 +276,7 @@ export default function Header() {
           aria-modal="true"
           aria-label="Мобильное меню"
         >
-          <div className="flex items-center justify-between">
+          {/* <div className="flex items-center justify-between">
             <div className="text-sm font-semibold text-slate-900">Меню</div>
             <button
               type="button"
@@ -285,7 +285,7 @@ export default function Header() {
             >
               Закрыть
             </button>
-          </div>
+          </div> */}
 
           <div className="mt-3 space-y-1">
             {navItems.map((item) => {
